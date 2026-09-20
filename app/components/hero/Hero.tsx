@@ -13,7 +13,7 @@ export function Hero() {
             <br />
             LTV With AI-Powered
             <br />
-            <span className="text-blue-600">Monetization</span>
+            <span className="text-[#3712d2]">Monetization</span>
           </h1>
 
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-gray-600 lg:mx-0 lg:text-base">
@@ -21,7 +21,7 @@ export function Hero() {
             seamlessly into your checkout, CRM, and customer vault.
           </p>
 
-          <p className="mx-auto mt-4 max-w-md text-sm font-bold text-blue-600 lg:mx-0 lg:text-base">
+          <p className="mx-auto mt-4 max-w-md text-sm font-bold text-[#3712d2] lg:mx-0 lg:text-base">
             Zero risk, conversion rates up to 90%
           </p>
 

@@ -71,3 +71,13 @@ body {
     animation: none;
   }
 }
+
+/* globals.css */
+.dashboard-zoom {
+  zoom: 0.55;
+}
+@media (max-width: 400px) {
+  .dashboard-zoom { zoom: 0.45; }
+}
+
+/* #3712d2 */

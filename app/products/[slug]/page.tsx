@@ -17,6 +17,10 @@ import { TrustMarquee } from "@/app/components/product/TrustMarquee";
 import { DeclineOsDashboard } from "@/app/components/product/dashboards/DeclineOsDashboard";
 import { WinnerTicker } from "@/app/components/product/WinnerTicker";
 import { FlipCardGallery } from "@/app/components/product/FlipCardGallery";
+import { MerchantPipeline } from "@/app/components/product/MerchantPipeline";
+import { AcquirerMatch } from "@/app/components/product/AcquirerMatch";
+import { AcquireOsDashboard } from "@/app/components/product/dashboards/AcquireOsDashboard";
+
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -54,8 +58,15 @@ export default async function ProductPage({
       <main>
         <ProductHero product={product} />
         <TrustMarquee slug={slug} />
-        {slug === "reward-os" && <WinnerTicker />}
         <StatTiles stats={product.stats} />
+        {slug === "acquire-os" ? (
+          <AcquireOsDashboard />
+        ) : (
+          null
+        )}
+        {slug === "reward-os" && <WinnerTicker />}
+        {slug === "acquire-os" && <MerchantPipeline />}
+        {slug === "acquire-os" && <AcquirerMatch />}
         <ProductDashboard slug={slug} />
 
         {/* DeclineOsDashboard */}

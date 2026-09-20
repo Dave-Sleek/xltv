@@ -18,7 +18,7 @@ export function ProductHero({ product }: { product: Product }) {
             {product.subheadline}
           </p>
 
-          <p className="mx-auto mt-5 max-w-md text-sm font-bold text-blue-600 lg:mx-0 lg:text-base">
+          <p className="mx-auto mt-5 max-w-md text-sm font-bold text-[#3712d2] lg:mx-0 lg:text-base">
             {product.tagline}
           </p>
 
