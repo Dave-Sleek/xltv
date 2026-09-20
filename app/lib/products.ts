@@ -5,6 +5,7 @@ export type Product = {
   name: string;
   tag: string;
   headline: string;
+  headlinetag: string;
   subheadline: string;
   tagline: string;
   heroImage: string;
@@ -54,7 +55,8 @@ export const PRODUCTS: Product[] = [
     slug: "revenue-os",
     name: "RevenueOS",
     tag: "Monetization",
-    headline: "Maximize Customer LTV With AI-Powered Monetization",
+    headline: "Maximize Customer LTV With AI-Powered",
+    headlinetag: "Monetization",
     subheadline:
       "RevenueOS is AI-powered monetization intelligence that integrates seamlessly into your checkout, CRM, and customer vault.",
     tagline: "Zero risk, conversion rates up to 90%",
@@ -119,7 +121,8 @@ export const PRODUCTS: Product[] = [
     slug: "decline-os",
     name: "DeclineOS",
     tag: "Recovery",
-    headline: "Turn False Declines Into Revenue With AI-Payment Intelligence",
+    headline: "Turn False Declines Into Revenue With",
+    headlinetag: "AI-Payment Intelligence",
     subheadline:
       "DeclineOS intercepts the declines in real time and uses AI-payment retry routing and payment recovery automation to determine the best path forward.",
     tagline: "Up to 30%+ recovery with zero upfront costs",
@@ -184,7 +187,8 @@ export const PRODUCTS: Product[] = [
     slug: "acquire-os",
     name: "AcquireOS",
     tag: "Processing",
-    headline: "Tier 1 High-Risk Processing Without Traditional Limitations",
+    headline: "Tier 1 High-Risk Processing Without",
+    headlinetag: "Traditional Limitations",
     subheadline:
       "AcquireOS orchestrates high-risk merchants and trusted acquirers with infrastructure and relationships needed to scale merchant portfolios with confidence.",
     tagline: "50%+ revenue splits, 12–24 hour approvals, $0 startup costs",
@@ -250,8 +254,9 @@ export const PRODUCTS: Product[] = [
     name: "RewardOS",
     tag: "Acquisition",
     headline:
-      "Boost User Acquisitions, Recurring Purchases, and Customer Referrals With Life-Changing Prize Pools",
-    subheadline:
+      "Boost User Acquisitions, Recurring Purchases, and Customer Referrals With",
+    headlinetag: "Life-Changing Prize Pools",
+      subheadline:
       "RewardOS outperforms traditional discounts with shared prize pools that give users a more compelling reason to engage with your campaigns.",
     tagline: "50%+ Conversion Uplift. Only Pay $2 per action.",
     heroImage: "/images/hero-rewardos.png",
@@ -318,6 +323,7 @@ export const PRODUCTS: Product[] = [
     tag: "Payments",
     placeholder: true,
     headline: "Global Payments and Financial Infrastructure",
+    headlinetag: "Coming soon...",
     subheadline:
       "PayOS provides the underlying payment rails and financial infrastructure that powers the XLTV ecosystem — enabling seamless cross-border transactions, multi-currency settlement, and unified financial operations.",
     tagline: "Built for scale, designed for global commerce",

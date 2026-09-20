@@ -12,6 +12,8 @@ export function ProductHero({ product }: { product: Product }) {
         <div className="order-1 text-center lg:text-left">
           <h1 className="text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem]">
             {product.headline}
+            <br/>
+            <span className="text-[#3712d2]">{product.headlinetag}</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-gray-600 lg:mx-0 lg:text-base">
