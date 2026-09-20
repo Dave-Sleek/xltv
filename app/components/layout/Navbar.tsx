@@ -1,44 +1,23 @@
+// components/layout/Navbar.tsx
 "use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown, Menu, X } from "lucide-react";
-
-/* ── Product data — the three OTHER products (RewardOS is current) ── */
-
-const PRODUCTS = [
-  {
-    name: "RewardOS",
-    href: "/products/reward-os",
-    tag: "Recurring reward intelligence",
-  },
-  {
-    name: "DeclineOS",
-    href: "/products/decline-os",
-    tag: "Payment recovery intelligence",
-  },
-  {
-    name: "AcquireOS",
-    href: "/products/acquire-s",
-    tag: "High-risk processing",
-  },
-];
+import { PRODUCTS } from "@/app/lib/products";
 
 const NAV_LINKS = [
-  { label: "Resources", href: "#resources" },
-  { label: "Our Ecosystem", href: "#ecosystem" },
-  { label: "About Us", href: "#about" },
+  { label: "Resources", href: "/resources" },
+  { label: "Our Ecosystem", href: "/ecosystem" },
+  { label: "About Us", href: "/about" },
 ];
-
-/* ── Navbar ──────────────────────────────────────────────── */
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Subtle shrink + shadow on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -46,7 +25,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile drawer is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -54,7 +32,6 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Close dropdown on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -82,7 +59,7 @@ export function Navbar() {
           scrolled ? "py-3" : "py-4"
         }`}
       >
-        {/* ── LEFT: Logo ── */}
+        {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-2 transition-transform duration-200 hover:scale-[1.02]"
@@ -92,7 +69,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* ── CENTER: Nav links (lg+) ── */}
+        {/* Center nav */}
         <div className="hidden items-center gap-1 text-sm font-medium text-gray-700 lg:flex">
           {/* Products dropdown */}
           <div
@@ -125,17 +102,15 @@ export function Navbar() {
                 >
                   {PRODUCTS.map((p) => (
                     <Link
-                      key={p.name}
-                      href={p.href}
+                      key={p.slug}
+                      href={`/products/${p.slug}`}
                       className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition hover:bg-gray-50"
                     >
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-gray-900">
                           {p.name}
                         </p>
-                        <p className="mt-0.5 text-xs text-gray-500">
-                          {p.tag}
-                        </p>
+                        <p className="mt-0.5 text-xs text-gray-500">{p.tag}</p>
                       </div>
                       <span className="mt-1 text-xs text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-gray-900">
                         →
@@ -158,27 +133,26 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* ── RIGHT: Language + CTAs + Hamburger ── */}
+        {/* Right actions */}
         <div className="flex items-center gap-2 lg:gap-3">
           <button className="hidden items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 lg:flex">
             <Globe className="h-4 w-4" /> EN
           </button>
 
           <Link
-            href="#demo"
+            href="/demo"
             className="hidden rounded-lg border-2 border-gray-900 px-4 py-2 text-sm font-semibold text-gray-900 transition-colors duration-200 hover:bg-gray-900 hover:text-white md:inline-flex"
           >
             Book a Demo
           </Link>
 
           <Link
-            href="#signin"
+            href="/signin"
             className="inline-flex rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-black"
           >
             Sign In
           </Link>
 
-          {/* Hamburger — visible below lg, on the RIGHT */}
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -190,11 +164,10 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* ── MOBILE DRAWER ── */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -204,7 +177,6 @@ export function Navbar() {
               className="fixed inset-0 z-40 bg-black/40 lg:hidden"
             />
 
-            {/* Drawer — slides in from the RIGHT */}
             <motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -212,7 +184,6 @@ export function Navbar() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-y-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden"
             >
-              {/* Drawer header */}
               <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
                 <span className="text-2xl font-black tracking-tight text-gray-900">
                   XLTV
@@ -227,17 +198,15 @@ export function Navbar() {
                 </button>
               </div>
 
-              {/* Drawer body */}
               <div className="flex-1 overflow-y-auto px-5 py-6">
-                {/* Products */}
                 <p className="px-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
                   Our Products
                 </p>
                 <div className="mt-2 space-y-1">
                   {PRODUCTS.map((p) => (
                     <Link
-                      key={p.name}
-                      href={p.href}
+                      key={p.slug}
+                      href={`/products/${p.slug}`}
                       onClick={() => setMobileOpen(false)}
                       className="block rounded-lg px-3 py-2.5 transition hover:bg-gray-50"
                     >
@@ -249,10 +218,8 @@ export function Navbar() {
                   ))}
                 </div>
 
-                {/* Divider */}
                 <div className="my-6 border-t border-gray-100" />
 
-                {/* Other links */}
                 <div className="space-y-1">
                   {NAV_LINKS.map((link) => (
                     <Link
@@ -267,18 +234,17 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* Drawer footer — CTAs */}
               <div className="border-t border-gray-100 p-5">
                 <div className="flex flex-col gap-3">
                   <Link
-                    href="#demo"
+                    href="/demo"
                     onClick={() => setMobileOpen(false)}
                     className="inline-flex w-full items-center justify-center rounded-lg border-2 border-gray-900 px-4 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white"
                   >
                     Book a Demo
                   </Link>
                   <Link
-                    href="#signin"
+                    href="/signin"
                     onClick={() => setMobileOpen(false)}
                     className="inline-flex w-full items-center justify-center rounded-lg bg-gray-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-black"
                   >

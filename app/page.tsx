@@ -13,6 +13,7 @@ import { SuccessStories } from "@/app/components/sections/SuccessStories";
 import { RoiCalculator } from "@/app/components/sections/RoiCalculator";
 import { Backers } from "@/app/components/sections/Backers";
 import { FinalCta } from "@/app/components/sections/FinalCta";
+import { DashboardPreview } from "@/app/components/product/DashboardPreview";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <WhyXltv />
         <ProvenAtScale />
         <HowItWorks />
+        <DashboardPreview />
         <ForOperators />
         <CaseStudy />
         <SuccessStories />
