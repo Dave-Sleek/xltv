@@ -57,7 +57,7 @@ export function GlobalReachMap() {
               />
             ))}
 
-            {ROUTES.flatMap((r) => [
+            {ROUTES.flatMap((r, i) => [
               <motion.circle
                 key={`${r.id}-from`}
                 cx={r.from.x}
@@ -66,6 +66,7 @@ export function GlobalReachMap() {
                 fill="#3b82f6"
                 animate={{ r: [0.6, 1, 0.6], opacity: [1, 0.5, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                
               />,
               <motion.circle
                 key={`${r.id}-to`}

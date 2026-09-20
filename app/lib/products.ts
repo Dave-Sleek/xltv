@@ -27,7 +27,7 @@ export type Product = {
   };
   
   /** 4 supporting stats in the stat-tile row */
-  stats: { value: string; label: string }[];
+  // stats: { value: string; label: string }[];
   
   /** Optional: 3 supporting metrics with icons */
   metrics: {
