@@ -399,16 +399,16 @@ function DashboardBody({
               {data.activity.map((a: any, i: number) => (
                 <li key={i} className="flex items-center gap-2.5">
                   <span
-                    className={`h-1.5 w-1.5 rounded-full ${
-                      {
-                        green: "bg-green-500",
-                        blue: "bg-blue-500",
-                        purple: "bg-purple-500",
-                        amber: "bg-amber-500",
-                        red: "bg-red-500",
-                      }[a.dot as keyof typeof a]
-                    }`}
-                  />
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          {
+                            green: "bg-green-500",
+                            blue: "bg-blue-500",
+                            purple: "bg-purple-500",
+                            amber: "bg-amber-500",
+                            red: "bg-red-500",
+                          }[a.dot as "green" | "blue" | "purple" | "amber" | "red"]
+                        }`}
+                      />
                   <span className="text-xs text-gray-700">{a.text}</span>
                 </li>
               ))}
