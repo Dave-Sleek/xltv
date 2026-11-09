@@ -45,15 +45,15 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
-        scrolled
-          ? "border-b border-gray-100 shadow-[0_1px_20px_rgba(0,0,0,0.04)]"
-          : "border-b border-transparent"
-      }`}
-    >
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className={`sticky top-0 z-50 backdrop-blur-md transition-all duration-300 supports-[backdrop-filter]:bg-white/50 ${
+          scrolled
+            ? "border-b border-gray-200/60 bg-white/100"
+            : "border-b border-transparent bg-white/100"
+        }`}
+      >
       <nav
         className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-300 ${
           scrolled ? "py-3" : "py-4"
@@ -81,7 +81,7 @@ export function Navbar() {
               type="button"
               onClick={() => setProductsOpen((v) => !v)}
               aria-expanded={productsOpen}
-              className="flex items-center gap-1 rounded-md px-3 py-2 transition hover:bg-gray-50 hover:text-gray-900"
+              className="flex items-center gap-1 rounded-md px-3 py-2 transition hover:bg-white/60 hover:text-gray-900"
             >
               Our Products
               <ChevronDown
@@ -98,7 +98,7 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.98 }}
                   transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute left-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-xl border border-gray-200 bg-white p-2 shadow-xl"
+                  className="absolute left-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-xl border border-gray-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl"
                 >
                   {PRODUCTS.map((p) => (
                     <Link
@@ -126,7 +126,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 transition hover:bg-gray-50 hover:text-gray-900"
+              className="rounded-md px-3 py-2 transition hover:bg-white/60 hover:text-gray-900"
             >
               {link.label}
             </Link>
@@ -135,7 +135,7 @@ export function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2 lg:gap-3">
-          <button className="hidden items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 lg:flex">
+          <button className="hidden items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-white/60 lg:flex">
             <Globe className="h-4 w-4" /> EN
           </button>
 
@@ -157,14 +157,14 @@ export function Navbar() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
-            className="flex h-9 w-9 items-center justify-center rounded-md text-gray-700 transition hover:bg-gray-100 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md text-gray-700 transition hover:bg-white/60 lg:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — kept solid for legibility */}
       <AnimatePresence>
         {mobileOpen && (
           <>

@@ -13,6 +13,15 @@ export type Product = {
   announcement: string;
   primaryCta: string;
   secondaryCta: string;
+  heroEyebrow?: string;
+  heroHeadlinePart1?: string;
+  heroHeadlinePart2?: string;
+  heroHeadlinePart3?: string;
+  heroSubheadline?: string;
+  heroTagline1?: string;
+  heroTagline2?: string;
+  heroPrimaryCta?: string;
+  heroSecondaryCta?: string;
   
   stats: { value: string; label: string }[];
   capabilities: { title: string; body: string }[];
@@ -253,6 +262,19 @@ export const PRODUCTS: Product[] = [
     slug: "reward-os",
     name: "RewardOS",
     tag: "Acquisition",
+
+
+    // NEW custom fields for the hero
+    heroEyebrow: "RewardOS",
+    heroHeadlinePart1: "Boost User Acquisitions,",
+    heroHeadlinePart2: "Recurring Purchases, and Customer",
+    heroHeadlinePart3: "Customer Referrals",
+    heroSubheadline: "RewardOS outperforms traditional discounts with shared prize pools that give users a more compelling reason to engage with your campaigns.",
+    heroTagline1: "50%+ Conversion Uplift.",
+    heroTagline2: "Only Pay $2 per action.",
+    heroPrimaryCta: "See demo",
+    heroSecondaryCta: "See what you could save",
+
     headline:
       "Boost User Acquisitions, Recurring Purchases, and Customer Referrals With",
     headlinetag: "Life-Changing Prize Pools",

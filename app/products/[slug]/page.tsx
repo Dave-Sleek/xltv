@@ -20,7 +20,7 @@ import { FlipCardGallery } from "@/app/components/product/FlipCardGallery";
 import { MerchantPipeline } from "@/app/components/product/MerchantPipeline";
 import { AcquirerMatch } from "@/app/components/product/AcquirerMatch";
 import { AcquireOsDashboard } from "@/app/components/product/dashboards/AcquireOsDashboard";
-
+import { RewardOsHero } from "@/app/components/product/RewardOsHero";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -56,39 +56,45 @@ export default async function ProductPage({
       <AnnouncementBar copy={product.announcement} />
       <Navbar />
       <main>
-        <ProductHero product={product} />
+        {/* ── HERO SECTION ── */}
+        {/* RewardOS gets the custom, gradient hero. All others get the standard hero. */}
+        {slug === "reward-os" ? (
+          <RewardOsHero product={product} />
+        ) : (
+          <ProductHero product={product} />
+        )}
+
+        {/* ── POST-HERO SECTIONS ── */}
         <TrustMarquee slug={slug} />
         <StatTiles stats={product.stats} />
-        {slug === "acquire-os" ? (
-          <AcquireOsDashboard />
-        ) : (
-          null
+
+        {/* Dashboards */}
+        {slug === "acquire-os" && <AcquireOsDashboard />}
+        {slug === "decline-os" && <DeclineOsDashboard />}
+        {slug !== "acquire-os" && slug !== "decline-os" && (
+          <ProductDashboard slug={slug} />
         )}
-        {slug === "reward-os" && <WinnerTicker />}
+
+        {/* AcquireOS Specifics */}
         {slug === "acquire-os" && <MerchantPipeline />}
         {slug === "acquire-os" && <AcquirerMatch />}
-        <ProductDashboard slug={slug} />
 
-        {/* DeclineOsDashboard */}
-          {slug === "decline-os" ? (
-            <DeclineOsDashboard />
-          ) : null}
+        {/* RewardOS Specifics */}
+        {slug === "reward-os" && <WinnerTicker />}
+        {slug === "reward-os" && <FlipCardGallery />}
+
+        {/* Global Sections */}
         <GlobalReach slug={slug} />
         <CapabilitiesList
           capabilities={product.capabilities}
           productName={product.name}
           slug={slug}
         />
-        {slug === "reward-os" && <FlipCardGallery />}
-        {/* <CapabilitiesList
-          capabilities={product.capabilities}
+        <ProcessFlow
+          steps={product.processSteps}
           productName={product.name}
-        /> */}
-         <ProcessFlow
-              steps={product.processSteps}
-              productName={product.name}
-             slug={slug}
-            />
+          slug={slug}
+        />
         
         <ProductFaq product={product} />
         <ProductCta product={product} />

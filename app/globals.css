@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 
+
 :root {
   --brand-blue: #2563eb;
   --brand-purple: #7c3aed;
@@ -8,7 +9,22 @@
   --ink: #0a0a0a;
   --muted: #6b7280;
   --border: #e5e7eb;
+
+  /* Announcement bar gradient — from the screenshot */
+  --announce-from: #a78bfa;   /* soft purple */
+  --announce-via: #8b5cf6;    /* mid purple */
+  --announce-to: #93c5fd;     /* soft blue-lavender */
 }
+
+
+/* :root {
+  --brand-blue: #2563eb;
+  --brand-purple: #7c3aed;
+  --brand-indigo: #4f46e5;
+  --ink: #0a0a0a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+} */
 
 /* :root {
   --background: #ffffff;
